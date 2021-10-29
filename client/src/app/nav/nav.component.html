@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Dating App</a>
+
+              <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="IsLoggedIn">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Matches</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">Messages</a>
+                </li>
+              </ul>
+              
+              <div *ngIf="IsLoggedIn" class="dropdown" dropdown>
+                <a class="dropdown-toggle text-light" dropdownToggle>Walcome user</a>
+                <div class="dropdown-menu mt-3" *bsDropdownMenu>
+                  <a class="dropdown-item">Edit profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item"(click)="logout()">Logout</a>
+                </div>
+              </div>
+
+              <div *ngIf="!IsLoggedIn" id="loginForm">
+                  <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+                      <input 
+                      name="userName"
+                      [(ngModel)]="model.userName"
+                      class="form-control me-2" 
+                      type="text" placeholder="User Name">
+
+                      <div>&nbsp;</div>
+
+                      <input 
+                      name="password"
+                      [(ngModel)]="model.password"
+                      class="form-control me-2" 
+                      type="password" placeholder="Password">
+
+                      <button style=" margin-left: 4px;" class="btn btn-outline-success" type="submit">Login</button>
+                    </form>
+              </div>         
+          </div>
+    </div>
+  </nav>
+
